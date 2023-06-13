@@ -37,7 +37,18 @@ const handleFulfilledDeleteContact = (state, { payload }) => {
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
-  extraReducers: {},
+  extraReducers: builder => {
+    builder
+      .addCase(fetchContacts.fulfilled, handleFulfilledContacts)
+      .addCase(addContact.fulfilled, handleFulfilledAddContact)
+      .addCase(deleteContact.fulfilled, handleFulfilledDeleteContact)
+      .addMatcher(action => {
+        action.type.endsWith('/pending');
+      }, handlePending)
+      .addMatcher(action => {
+        action.type.endsWith('/rejected');
+      }, handleRejected);
+  },
 });
 
 export const contactsReducer = contactsSlice.reducer;
