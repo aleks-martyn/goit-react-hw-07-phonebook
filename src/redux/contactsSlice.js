@@ -11,9 +11,27 @@ const handlePending = state => {
   state.isLoading = true;
 };
 
-const handleRejected = (state, action) => {
+const handleRejected = (state, { payload }) => {
   state.isLoading = false;
-  state.error = action.payload;
+  state.error = payload;
+};
+
+const handleFulfilledContacts = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = null;
+  state.items = payload;
+};
+
+const handleFulfilledAddContact = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = null;
+  state.items = [...state.items, payload];
+};
+
+const handleFulfilledDeleteContact = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = null;
+  state.items = state.items.filter(({ id }) => id !== payload);
 };
 
 const contactsSlice = createSlice({
