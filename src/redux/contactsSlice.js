@@ -6,3 +6,11 @@ const initialState = {
   isLoading: false,
   error: null,
 };
+
+const contactsSlice = createSlice({
+  name: 'contacts',
+  initialState,
+  extraReducers: {},
+});
+
+export const contactsReducer = contactsSlice.reducer;
