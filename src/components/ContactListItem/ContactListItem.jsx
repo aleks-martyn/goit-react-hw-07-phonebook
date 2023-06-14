@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { deleteContact } from 'redux/operations';
 import { Item, Text, Marker } from './ContactListItem.styled';
 
 export const ContactListItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
+
+  const handleDelete = () => dispatch(deleteContact(id));
 
   return (
     <Item>
@@ -11,7 +14,9 @@ export const ContactListItem = ({ id, name, number }) => {
       <Text>
         {name}: <span>{number}</span>
       </Text>
-      <button type="button">Delete</button>
+      <button type="button" onClick={handleDelete}>
+        Delete
+      </button>
     </Item>
   );
 };
