@@ -1,3 +1,4 @@
+import { Filter } from './Filter';
 import { Container } from './App.styled';
 
 export const App = () => {
@@ -5,6 +6,7 @@ export const App = () => {
     <Container>
       <h1>Phonebook</h1>
       <h2>Contacts</h2>
+      <Filter />
     </Container>
   );
 };
