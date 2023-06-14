@@ -36,8 +36,8 @@ export const ContactList = () => {
       {isLoading && !error && <p>Request in progress...</p>}
       {error && <p>An error occurred!</p>}
       <List>
-        {filteredContacts.map(({ id, name, number }) => (
-          <ContactListItem key={id} id={id} name={name} number={number} />
+        {filteredContacts.map(({ id, name, phone }) => (
+          <ContactListItem key={id} id={id} name={name} phone={phone} />
         ))}
       </List>
     </>
