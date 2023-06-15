@@ -25,7 +25,7 @@ const handleFulfilledContacts = (state, { payload }) => {
 const handleFulfilledAddContact = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
-  state.items = [...state.items, payload];
+  state.items = [payload, ...state.items];
 };
 
 const handleFulfilledDeleteContact = (state, { payload }) => {
